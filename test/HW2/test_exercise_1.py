@@ -1,13 +1,7 @@
-from selenium import webdriver
-
 from locators.jdi_testing_locators import JdiTestingLocators
 
 
-def test_exercise_1(user_credentials):
-    # 0.Webdriver initializing
-    driver = webdriver.Chrome()
-    driver.implicitly_wait(time_to_wait=5)
-
+def test_exercise_1(user_credentials, driver):
     # 1.Open browser and go to page
     driver.get(url="https://jdi-testing.github.io/jdi-light/index.html")
 
