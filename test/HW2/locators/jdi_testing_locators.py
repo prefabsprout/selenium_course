@@ -25,3 +25,4 @@ class JdiTestingLocators:
     CUSTOM_TEXT = (By.CSS_SELECTOR, ".benefits > div:nth-child(2) .benefit-txt")
     MULTI_TEXT = (By.CSS_SELECTOR, ".benefits > div:nth-child(3) .benefit-txt")
     BASE_TEXT = (By.CSS_SELECTOR, ".benefits > div:nth-child(4) .benefit-txt")
+    DIFFERENT_ELEMENTS_BUTTON = (By.CSS_SELECTOR, ".sidebar-menu > li:nth-child(3) li:nth-child(8)")
