@@ -35,10 +35,10 @@ class MainPage(BasePage):
             "Unexpected text on METALS & COLORS button in header"
 
     def should_icons_be_visible(self):
-        assert self.browser.find_element(*Icons.ICON_PRACTISE).is_displayed() is True
-        assert self.browser.find_element(*Icons.ICON_CUSTOM).is_displayed() is True
-        assert self.browser.find_element(*Icons.ICON_BASE).is_displayed() is True
-        assert self.browser.find_element(*Icons.ICON_MULTI).is_displayed() is True
+        assert self.browser.find_element(*Icons.ICON_PRACTISE).is_displayed(), "Practise icon is not displayed"
+        assert self.browser.find_element(*Icons.ICON_CUSTOM).is_displayed(), "Custom icon is not displayed"
+        assert self.browser.find_element(*Icons.ICON_BASE).is_displayed(), "Base icon is not displayed"
+        assert self.browser.find_element(*Icons.ICON_MULTI).is_displayed(), "Multi icon is not displayed"
 
     def should_texts_under_icons_be_proper(self):
         assert self.is_text_expected(TextSections.PRACTISE_TEXT,
