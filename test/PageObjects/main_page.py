@@ -22,13 +22,17 @@ class MainPage(BasePage):
         self.browser.find_element(*HeaderButtons.LOGIN_BUTTON).click()
 
     def should_be_authorised(self, authorised_user_full_name):
-        assert self.browser.find_element(*TextSections.USER_NAME).text == authorised_user_full_name
+        assert self.is_text_expected(TextSections.USER_NAME,
+                                     authorised_user_full_name), "User is not authorised"
 
     def should_header_buttons_have_proper_names(self):
-        assert self.browser.find_element(*HeaderButtons.HOME_BUTTON).text == "HOME"
-        assert self.browser.find_element(*HeaderButtons.CONTACT_FORM_BUTTON).text == "CONTACT FORM"
-        assert self.browser.find_element(*HeaderButtons.SERVICE_DROPDOWN_BUTTON).text == "SERVICE"
-        assert self.browser.find_element(*HeaderButtons.METALS_COLORS_BUTTON).text == "METALS & COLORS"
+        assert self.is_text_expected(HeaderButtons.HOME_BUTTON, "HOME"), "Unexpected text on HOME button in header"
+        assert self.is_text_expected(HeaderButtons.CONTACT_FORM_BUTTON, "CONTACT FORM"), \
+            "Unexpected text on CONTACT FORM button in header"
+        assert self.is_text_expected(HeaderButtons.SERVICE_DROPDOWN_BUTTON, "SERVICE"), \
+            "Unexpected text on SERVICE button in header"
+        assert self.is_text_expected(HeaderButtons.METALS_COLORS_BUTTON, "METALS & COLORS"), \
+            "Unexpected text on METALS & COLORS button in header"
 
     def should_icons_be_visible(self):
         assert self.browser.find_element(*Icons.ICON_PRACTISE).is_displayed() is True
@@ -37,26 +41,34 @@ class MainPage(BasePage):
         assert self.browser.find_element(*Icons.ICON_MULTI).is_displayed() is True
 
     def should_texts_under_icons_be_proper(self):
-        assert self.browser.find_element(*TextSections.PRACTISE_TEXT).text == "To include good practices\n" \
-                                                                              "and ideas from successful\n" \
-                                                                              "EPAM project"
-        assert self.browser.find_element(*TextSections.CUSTOM_TEXT).text == "To be flexible and\n" \
-                                                                            "customizable"
-        assert self.browser.find_element(*TextSections.MULTI_TEXT).text == "To be multiplatform"
-        assert self.browser.find_element(*TextSections.BASE_TEXT).text == "Already have good base\n" \
-                                                                          "(about 20 internal and\n" \
-                                                                          "some external projects),\n" \
-                                                                          "wish to get more…"
+        assert self.is_text_expected(TextSections.PRACTISE_TEXT,
+                                     "To include good practices\n"
+                                     "and ideas from successful\n"
+                                     "EPAM project"), "Unexpected text under PRACTISE icon"
+        assert self.is_text_expected(TextSections.CUSTOM_TEXT,
+                                     "To be flexible and\n"
+                                     "customizable"), "Unexpected text under CUSTOM icon"
+        assert self.is_text_expected(TextSections.MULTI_TEXT,
+                                     "To be multiplatform"), "Unexpected text under MULTI icon"
+        assert self.is_text_expected(TextSections.BASE_TEXT,
+                                     "Already have good base\n"
+                                     "(about 20 internal and\n"
+                                     "some external projects),\n"
+                                     "wish to get more…"), "Unexpected text under BASE icon"
 
     def should_iframes_with_frame_button_exist(self):
         assert self.__get_list_of_iframes_with_frame_button()
 
     def should_sidebar_buttons_have_proper_text(self):
-        assert self.browser.find_element(*SidebarButtons.HOME_BUTTON).text == "Home"
-        assert self.browser.find_element(*SidebarButtons.CONTACT_FORM_BUTTON).text == "Contact form"
-        assert self.browser.find_element(*SidebarButtons.SERVICE_DROPDOWN_MENU).text == "Service"
-        assert self.browser.find_element(*SidebarButtons.METALS_COLORS_BUTTON).text == "Metals & Colors"
-        assert self.browser.find_element(*SidebarButtons.ELEMENTS_PACKS_BUTTON).text == "Elements packs"
+        assert self.is_text_expected(SidebarButtons.HOME_BUTTON, "Home"), "Unexpected text on Home button in sidebar"
+        assert self.is_text_expected(SidebarButtons.CONTACT_FORM_BUTTON, "Contact form"), \
+            "Unexpected text on Contact form button in sidebar"
+        assert self.is_text_expected(SidebarButtons.SERVICE_DROPDOWN_MENU, "Service"), \
+            "Unexpected text on Service button in sidebar"
+        assert self.is_text_expected(SidebarButtons.METALS_COLORS_BUTTON, "Metals & Colors"), \
+            "Unexpected text on Metals & Colors button in sidebar"
+        assert self.is_text_expected(SidebarButtons.ELEMENTS_PACKS_BUTTON, "Elements packs"), \
+            "Unexpected text on Elements packs button in sidebar"
 
     def should_any_iframe_with_frame_button_have_iframe(self):
         self.browser.switch_to.frame(self.__get_list_of_iframes_with_frame_button()[0])
