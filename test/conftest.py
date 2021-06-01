@@ -3,11 +3,11 @@ from selenium import webdriver
 
 
 @pytest.fixture()
-def driver():
-    driver = webdriver.Chrome()
-    driver.implicitly_wait(time_to_wait=5)
-    yield driver
-    driver.quit()
+def browser():
+    browser = webdriver.Chrome()
+    browser.implicitly_wait(time_to_wait=5)
+    yield browser
+    browser.quit()
 
 
 @pytest.fixture()
