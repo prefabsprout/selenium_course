@@ -46,6 +46,3 @@ def test_exercise_2(user_credentials, driver):
     element_dropdown_select.select_by_visible_text("Yellow")
     assert driver.find_element(*DifferentElementsLocators.LOG_SECTION).text == \
            f'{datetime.now().strftime("%H:%M:%S")} Colors: value changed to Yellow'
-
-    # 10.Close browser
-    driver.quit()

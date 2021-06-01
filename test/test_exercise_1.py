@@ -58,6 +58,3 @@ def test_exercise_1(user_credentials, driver):
     assert driver.find_element(*JdiTestingLocators.SIDEBAR_SERVICE_BUTTON).text == "Service"
     assert driver.find_element(*JdiTestingLocators.SIDEBAR_METALS_COLORS_BUTTON).text == "Metals & Colors"
     assert driver.find_element(*JdiTestingLocators.SIDEBAR_ELEMENTS_PACKS_BUTTON).text == "Elements packs"
-
-    # 12.Close browser
-    driver.quit()

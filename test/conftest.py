@@ -6,7 +6,8 @@ from selenium import webdriver
 def driver():
     driver = webdriver.Chrome()
     driver.implicitly_wait(time_to_wait=5)
-    return driver
+    yield driver
+    driver.quit()
 
 
 @pytest.fixture()
