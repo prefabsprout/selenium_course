@@ -12,6 +12,6 @@ After that be sure you have `chromedriver.exe` in your PATH directory.
 - Chrome 90.0.4430.212 (64 bit)
 - Python 3.8.8
 
-## HW2
-To execute scripts type in terminal:  
+## Test execution
+To execute test scripts type in terminal:  
 ```pytest test\HW2\```

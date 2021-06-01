@@ -2,8 +2,9 @@ from datetime import datetime
 
 from selenium.webdriver.support.select import Select
 
-from locators.jdi_testing_locators import JdiTestingLocators
-from locators.different_elements_locators import DifferentElementsLocators
+from test.Locators.different_elements_page_locators import DifferentElementsLocators
+from test.Locators.home_page_locators import JdiTestingLocators
+
 
 
 def test_exercise_2(user_credentials, driver):

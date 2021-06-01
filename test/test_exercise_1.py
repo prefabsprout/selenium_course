@@ -1,4 +1,4 @@
-from locators.jdi_testing_locators import JdiTestingLocators
+from test.Locators.home_page_locators import JdiTestingLocators
 
 
 def test_exercise_1(user_credentials, driver):
