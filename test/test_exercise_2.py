@@ -12,7 +12,7 @@ from test.Locators.text_sections import TextSections
 from test.constants import HOMEPAGE_URL
 
 
-def test_exercise_2(user_credentials, driver):
+def test_different_element_page_functionality(user_credentials, driver):
     # 1.Open browser and go to page
     driver.get(HOMEPAGE_URL)
 
@@ -25,7 +25,7 @@ def test_exercise_2(user_credentials, driver):
     driver.find_element(*Forms.USER_PASSWORD_FORM).send_keys(user_credentials["password"])
     driver.find_element(*Buttons.LOGIN_BUTTON).click()
 
-    # 4.Assert Username is loggined
+    # 4.Assert Username is logged
     assert driver.find_element(*TextSections.USER_NAME).text == user_credentials["full_username"]
 
     # 5.Open through the header menu Service -> Different Elements Page

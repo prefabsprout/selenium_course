@@ -14,4 +14,4 @@ After that be sure you have `chromedriver.exe` in your PATH directory.
 
 ## Test execution
 To execute test scripts type in terminal:  
-```pytest test\HW2\```
+```pytest test```
