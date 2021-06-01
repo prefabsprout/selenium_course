@@ -3,10 +3,9 @@ from datetime import datetime
 from selenium.webdriver.support.select import Select
 
 from test.Locators.buttons import Buttons
-from test.Locators.different_elements_page_locators import Checkboxes
+from test.Locators.checkboxes import Checkboxes
 from test.Locators.dropdowns import Dropdowns
 from test.Locators.forms import Forms
-from test.Locators.icons import Icons
 from test.Locators.radiobuttons import RadioButtons
 from test.Locators.text_sections import TextSections
 from test.constants import HOMEPAGE_URL
