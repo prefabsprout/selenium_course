@@ -2,11 +2,12 @@ from test.Locators.buttons import Buttons
 from test.Locators.forms import Forms
 from test.Locators.icons import Icons
 from test.Locators.text_sections import TextSections
+from test.constants import HOMEPAGE_URL
 
 
 def test_exercise_1(user_credentials, driver):
     # 1.Open browser and go to page
-    driver.get(url="https://jdi-testing.github.io/jdi-light/index.html")
+    driver.get(HOMEPAGE_URL)
 
     # 2.Assert browser title
     assert driver.title == "Home Page"
