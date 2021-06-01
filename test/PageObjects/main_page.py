@@ -15,11 +15,18 @@ class MainPage(BasePage):
     def __get_list_of_iframes_with_frame_button(self):
         return self.browser.find_elements_by_id("frame")
 
+    def go_to_different_elements_page(self):
+        self.browser.find_element(*HeaderButtons.DIFFERENT_ELEMENTS_BUTTON).click()
+
     def login(self, username, password):
         self.browser.find_element(*HeaderButtons.PROFILE_MENU_BUTTON).click()
         self.browser.find_element(*Forms.USER_NAME_FORM).send_keys(username)
         self.browser.find_element(*Forms.USER_PASSWORD_FORM).send_keys(password)
         self.browser.find_element(*HeaderButtons.LOGIN_BUTTON).click()
+
+    def open_service_sidebar_menu(self):
+        self.browser.find_element(*HeaderButtons.SERVICE_DROPDOWN_BUTTON).click()
+        return self
 
     def should_be_authorised(self, authorised_user_full_name):
         assert self.is_text_expected(TextSections.USER_NAME,
