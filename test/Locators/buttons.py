@@ -1,28 +1,17 @@
 from selenium.webdriver.common.by import By
 
 
-class JdiTestingLocators:
-    PROFILE_MENU = (By.CLASS_NAME, "uui-profile-menu")
-    USER_NAME_FORM = (By.ID, "name")
-    USER_PASSWORD_FORM = (By.ID, "password")
+class Buttons:
+    PROFILE_MENU_BUTTON = (By.CLASS_NAME, "uui-profile-menu")
     LOGIN_BUTTON = (By.ID, "login-button")
-    USER_NAME = (By.ID, "user-name")
     HOME_BUTTON = (By.CSS_SELECTOR, ".uui-header .nav > li:nth-child(1) > a")
     CONTACT_FORM_BUTTON = (By.CSS_SELECTOR, ".uui-header .nav > li:nth-child(2) > a")
-    SERVICE_DROPDOWN = (By.CSS_SELECTOR, ".uui-header .nav > li:nth-child(3) > a")
     METALS_COLORS_BUTTON = (By.CSS_SELECTOR, ".uui-header .nav > li:nth-child(4) > a")
-    FRAME_BUTTON = (By.ID, "frame-button")
     SIDEBAR_HOME_BUTTON = (By.CSS_SELECTOR, ".sidebar-menu > li:nth-child(1) span")
     SIDEBAR_CONTACT_FORM_BUTTON = (By.CSS_SELECTOR, ".sidebar-menu > li:nth-child(2) span")
     SIDEBAR_SERVICE_BUTTON = (By.CSS_SELECTOR, ".sidebar-menu > li:nth-child(3) span")
     SIDEBAR_METALS_COLORS_BUTTON = (By.CSS_SELECTOR, ".sidebar-menu > li:nth-child(4) span")
     SIDEBAR_ELEMENTS_PACKS_BUTTON = (By.CSS_SELECTOR, ".sidebar-menu > li:nth-child(5) span")
-    ICON_PRACTISE = (By.CLASS_NAME, "icon-practise")
-    ICON_CUSTOM = (By.CLASS_NAME, "icon-custom")
-    ICON_MULTI = (By.CLASS_NAME, "icon-multi")
-    ICON_BASE = (By.CLASS_NAME, "icon-base")
-    PRACTISE_TEXT = (By.CSS_SELECTOR, ".benefits > div:nth-child(1) .benefit-txt")
-    CUSTOM_TEXT = (By.CSS_SELECTOR, ".benefits > div:nth-child(2) .benefit-txt")
-    MULTI_TEXT = (By.CSS_SELECTOR, ".benefits > div:nth-child(3) .benefit-txt")
-    BASE_TEXT = (By.CSS_SELECTOR, ".benefits > div:nth-child(4) .benefit-txt")
     DIFFERENT_ELEMENTS_BUTTON = (By.CSS_SELECTOR, ".sidebar-menu > li:nth-child(3) li:nth-child(8)")
+    FRAME_BUTTON = (By.ID, "frame-button")
+    SERVICE_DROPDOWN_BUTTON = (By.CSS_SELECTOR, ".uui-header .nav > li:nth-child(3) > a")
