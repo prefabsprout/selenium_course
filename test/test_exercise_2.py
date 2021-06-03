@@ -11,7 +11,7 @@ from test.Locators.text_sections import TextSections
 from test.constants import HOMEPAGE_URL
 
 
-def test_different_element_page_functionality(user_credentials, driver):
+def test_different_elements_page_functionality(user_credentials, driver):
     # 1.Open browser and go to page
     driver.get(HOMEPAGE_URL)
 
