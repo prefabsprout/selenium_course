@@ -7,7 +7,6 @@ from test.Locators.dropdowns import Dropdowns
 from test.Locators.forms import Forms
 from test.Locators.header_buttons import HeaderButtons
 from test.Locators.radiobuttons import RadioButtons
-from test.Locators.sidebar_buttons import SidebarButtons
 from test.Locators.text_sections import TextSections
 from test.constants import HOMEPAGE_URL
 
@@ -28,9 +27,9 @@ def test_different_elements_page_functionality(user_credentials, driver):
     # 4.Assert Username is logged
     assert driver.find_element(*TextSections.USER_NAME).text == user_credentials["full_username"]
 
-    # 5.Open through the sidebar menu Service -> Different Elements Page
-    driver.find_element(*SidebarButtons.SERVICE_BUTTON).click()
-    driver.find_element(*SidebarButtons.DIFFERENT_ELEMENTS_BUTTON).click()
+    # 5.Open through the header menu Service -> Different Elements Page
+    driver.find_element(*HeaderButtons.SERVICE_DROPDOWN_BUTTON).click()
+    driver.find_element(*HeaderButtons.DIFFERENT_ELEMENTS_BUTTON).click()
 
     # 6-9.Select checkboxes. Assert there is a log for each checkbox
     driver.find_element(*Checkboxes.WIND_CHECKBOX).click()

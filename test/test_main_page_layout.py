@@ -61,6 +61,6 @@ def test_main_page_layout(user_credentials, driver):
     # 11.Assert that there are 5 items in the Left Section are displayed and they have proper text
     assert driver.find_element(*SidebarButtons.HOME_BUTTON).text == "Home"
     assert driver.find_element(*SidebarButtons.CONTACT_FORM_BUTTON).text == "Contact form"
-    assert driver.find_element(*SidebarButtons.SERVICE_BUTTON).text == "Service"
+    assert driver.find_element(*SidebarButtons.SERVICE_DROPDOWN_MENU).text == "Service"
     assert driver.find_element(*SidebarButtons.METALS_COLORS_BUTTON).text == "Metals & Colors"
     assert driver.find_element(*SidebarButtons.ELEMENTS_PACKS_BUTTON).text == "Elements packs"
