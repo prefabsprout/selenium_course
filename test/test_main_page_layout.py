@@ -1,3 +1,4 @@
+from test.Locators.buttons import Buttons
 from test.Locators.forms import Forms
 from test.Locators.header_buttons import HeaderButtons
 from test.Locators.icons import Icons
@@ -52,7 +53,7 @@ def test_main_page_layout(user_credentials, driver):
 
     # 9.Switch to the iframe and check that there is “Frame Button” in the iframe
     driver.switch_to.frame(iframes_with_frame_button[0])
-    driver.find_element(*HeaderButtons.FRAME_BUTTON)
+    driver.find_element(*Buttons.FRAME_BUTTON)
 
     # 10.Switch to original window back
     driver.switch_to.default_content()

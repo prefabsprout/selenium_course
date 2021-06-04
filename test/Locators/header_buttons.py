@@ -7,5 +7,4 @@ class HeaderButtons:
     HOME_BUTTON = (By.CSS_SELECTOR, ".uui-header .nav > li:nth-child(1) > a")
     CONTACT_FORM_BUTTON = (By.CSS_SELECTOR, ".uui-header .nav > li:nth-child(2) > a")
     METALS_COLORS_BUTTON = (By.CSS_SELECTOR, ".uui-header .nav > li:nth-child(4) > a")
-    FRAME_BUTTON = (By.ID, "frame-button")
     SERVICE_DROPDOWN_BUTTON = (By.CSS_SELECTOR, ".uui-header .nav > li:nth-child(3) > a")
