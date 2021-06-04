@@ -29,10 +29,10 @@ def test_main_page_layout(user_credentials, driver):
     assert driver.find_element(*HeaderButtons.METALS_COLORS_BUTTON).text == "METALS & COLORS"
 
     # 6.Assert that there are 4 images on the Index Page and they are displayed
-    assert driver.find_element(*Icons.ICON_PRACTISE).is_displayed() is True
-    assert driver.find_element(*Icons.ICON_CUSTOM).is_displayed() is True
-    assert driver.find_element(*Icons.ICON_BASE).is_displayed() is True
-    assert driver.find_element(*Icons.ICON_MULTI).is_displayed() is True
+    assert driver.find_element(*Icons.ICON_PRACTISE).is_displayed()
+    assert driver.find_element(*Icons.ICON_CUSTOM).is_displayed()
+    assert driver.find_element(*Icons.ICON_BASE).is_displayed()
+    assert driver.find_element(*Icons.ICON_MULTI).is_displayed()
 
     # 7.Assert that there are 4 texts on the Index Page under icons and they have proper text
     assert driver.find_element(*TextSections.PRACTISE_TEXT).text == "To include good practices\n" \
@@ -48,7 +48,7 @@ def test_main_page_layout(user_credentials, driver):
 
     # 8.Assert that there is the iframe with “Frame Button” exist
     iframes_with_frame_button = driver.find_elements_by_id("frame")
-    assert iframes_with_frame_button != []
+    assert iframes_with_frame_button
 
     # 9.Switch to the iframe and check that there is “Frame Button” in the iframe
     driver.switch_to.frame(iframes_with_frame_button[0])
