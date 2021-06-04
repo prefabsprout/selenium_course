@@ -2,11 +2,12 @@ from datetime import datetime
 
 from selenium.webdriver.support.select import Select
 
-from test.Locators.buttons import Buttons
 from test.Locators.checkboxes import Checkboxes
 from test.Locators.dropdowns import Dropdowns
 from test.Locators.forms import Forms
+from test.Locators.header_buttons import HeaderButtons
 from test.Locators.radiobuttons import RadioButtons
+from test.Locators.sidebar_buttons import SidebarButtons
 from test.Locators.text_sections import TextSections
 from test.constants import HOMEPAGE_URL
 
@@ -19,17 +20,17 @@ def test_different_elements_page_functionality(user_credentials, driver):
     assert driver.title == "Home Page"
 
     # 3.Perform login
-    driver.find_element(*Buttons.PROFILE_MENU_BUTTON).click()
+    driver.find_element(*HeaderButtons.PROFILE_MENU_BUTTON).click()
     driver.find_element(*Forms.USER_NAME_FORM).send_keys(user_credentials["username"])
     driver.find_element(*Forms.USER_PASSWORD_FORM).send_keys(user_credentials["password"])
-    driver.find_element(*Buttons.LOGIN_BUTTON).click()
+    driver.find_element(*HeaderButtons.LOGIN_BUTTON).click()
 
     # 4.Assert Username is logged
     assert driver.find_element(*TextSections.USER_NAME).text == user_credentials["full_username"]
 
-    # 5.Open through the header menu Service -> Different Elements Page
-    driver.find_element(*Buttons.SIDEBAR_SERVICE_BUTTON).click()
-    driver.find_element(*Buttons.DIFFERENT_ELEMENTS_BUTTON).click()
+    # 5.Open through the sidebar menu Service -> Different Elements Page
+    driver.find_element(*SidebarButtons.SERVICE_BUTTON).click()
+    driver.find_element(*SidebarButtons.DIFFERENT_ELEMENTS_BUTTON).click()
 
     # 6-9.Select checkboxes. Assert there is a log for each checkbox
     driver.find_element(*Checkboxes.WIND_CHECKBOX).click()

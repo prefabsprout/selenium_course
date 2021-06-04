@@ -1,6 +1,7 @@
-from test.Locators.buttons import Buttons
 from test.Locators.forms import Forms
+from test.Locators.header_buttons import HeaderButtons
 from test.Locators.icons import Icons
+from test.Locators.sidebar_buttons import SidebarButtons
 from test.Locators.text_sections import TextSections
 from test.constants import HOMEPAGE_URL
 
@@ -13,19 +14,19 @@ def test_main_page_layout(user_credentials, driver):
     assert driver.title == "Home Page"
 
     # 3.Perform login
-    driver.find_element(*Buttons.PROFILE_MENU_BUTTON).click()
+    driver.find_element(*HeaderButtons.PROFILE_MENU_BUTTON).click()
     driver.find_element(*Forms.USER_NAME_FORM).send_keys(user_credentials["username"])
     driver.find_element(*Forms.USER_PASSWORD_FORM).send_keys(user_credentials["password"])
-    driver.find_element(*Buttons.LOGIN_BUTTON).click()
+    driver.find_element(*HeaderButtons.LOGIN_BUTTON).click()
 
     # 4.Assert Username is logged
     assert driver.find_element(*TextSections.USER_NAME).text == user_credentials["full_username"]
 
     # 5.Assert that there are 4 items on the header section are displayed and they have proper texts
-    assert driver.find_element(*Buttons.HOME_BUTTON).text == "HOME"
-    assert driver.find_element(*Buttons.CONTACT_FORM_BUTTON).text == "CONTACT FORM"
-    assert driver.find_element(*Buttons.SERVICE_DROPDOWN_BUTTON).text == "SERVICE"
-    assert driver.find_element(*Buttons.METALS_COLORS_BUTTON).text == "METALS & COLORS"
+    assert driver.find_element(*HeaderButtons.HOME_BUTTON).text == "HOME"
+    assert driver.find_element(*HeaderButtons.CONTACT_FORM_BUTTON).text == "CONTACT FORM"
+    assert driver.find_element(*HeaderButtons.SERVICE_DROPDOWN_BUTTON).text == "SERVICE"
+    assert driver.find_element(*HeaderButtons.METALS_COLORS_BUTTON).text == "METALS & COLORS"
 
     # 6.Assert that there are 4 images on the Index Page and they are displayed
     assert driver.find_element(*Icons.ICON_PRACTISE).is_displayed() is True
@@ -51,14 +52,14 @@ def test_main_page_layout(user_credentials, driver):
 
     # 9.Switch to the iframe and check that there is “Frame Button” in the iframe
     driver.switch_to.frame(iframes_with_frame_button[0])
-    driver.find_element(*Buttons.FRAME_BUTTON)
+    driver.find_element(*HeaderButtons.FRAME_BUTTON)
 
     # 10.Switch to original window back
     driver.switch_to.default_content()
 
     # 11.Assert that there are 5 items in the Left Section are displayed and they have proper text
-    assert driver.find_element(*Buttons.SIDEBAR_HOME_BUTTON).text == "Home"
-    assert driver.find_element(*Buttons.SIDEBAR_CONTACT_FORM_BUTTON).text == "Contact form"
-    assert driver.find_element(*Buttons.SIDEBAR_SERVICE_BUTTON).text == "Service"
-    assert driver.find_element(*Buttons.SIDEBAR_METALS_COLORS_BUTTON).text == "Metals & Colors"
-    assert driver.find_element(*Buttons.SIDEBAR_ELEMENTS_PACKS_BUTTON).text == "Elements packs"
+    assert driver.find_element(*SidebarButtons.HOME_BUTTON).text == "Home"
+    assert driver.find_element(*SidebarButtons.CONTACT_FORM_BUTTON).text == "Contact form"
+    assert driver.find_element(*SidebarButtons.SERVICE_BUTTON).text == "Service"
+    assert driver.find_element(*SidebarButtons.METALS_COLORS_BUTTON).text == "Metals & Colors"
+    assert driver.find_element(*SidebarButtons.ELEMENTS_PACKS_BUTTON).text == "Elements packs"
