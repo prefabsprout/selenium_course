@@ -1,5 +1,8 @@
+import pytest
+
 from test.PageObjects.main_page import MainPage
 from test.constants import HOMEPAGE_URL
+from test.datacontent.main_page_data_content import MainPageDataContent
 
 
 class TestMainPageLayout:
@@ -20,21 +23,23 @@ class TestMainPageLayout:
         main_page.login(user_credentials["username"], user_credentials["password"])
         main_page.should_be_authorised(user_credentials["full_username"])
 
-    def test_should_header_buttons_have_proper_names(self, browser):
+    @pytest.mark.parametrize('button', MainPageDataContent.header_buttons_content)
+    def test_should_header_buttons_have_proper_names(self, browser, button):
         # Open browser and go to page
         main_page = MainPage(browser, HOMEPAGE_URL)
         main_page.open()
 
         # Assert that there are 4 items on the header section are displayed and they have proper texts
-        main_page.should_header_buttons_have_proper_names()
+        main_page.should_header_button_have_proper_name(*button)
 
-    def test_should_icons_be_visible(self, browser):
+    @pytest.mark.parametrize('icon', MainPageDataContent.icons_content)
+    def test_should_icons_be_visible(self, browser, icon):
         # Open browser and go to page
         main_page = MainPage(browser, HOMEPAGE_URL)
         main_page.open()
 
         # Assert that there are 4 images on the Index Page and they are displayed
-        main_page.should_icons_be_visible()
+        main_page.should_icon_be_visible(*icon)
 
     def test_should_texts_under_icons_be_proper(self, browser):
         # Open browser and go to page

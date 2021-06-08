@@ -32,20 +32,11 @@ class MainPage(BasePage):
         assert self.is_text_expected(TextSections.USER_NAME,
                                      authorised_user_full_name), "User is not authorised"
 
-    def should_header_buttons_have_proper_names(self):
-        assert self.is_text_expected(HeaderButtons.HOME_BUTTON, "HOME"), "Unexpected text on HOME button in header"
-        assert self.is_text_expected(HeaderButtons.CONTACT_FORM_BUTTON, "CONTACT FORM"), \
-            "Unexpected text on CONTACT FORM button in header"
-        assert self.is_text_expected(HeaderButtons.SERVICE_DROPDOWN_BUTTON, "SERVICE"), \
-            "Unexpected text on SERVICE button in header"
-        assert self.is_text_expected(HeaderButtons.METALS_COLORS_BUTTON, "METALS & COLORS"), \
-            "Unexpected text on METALS & COLORS button in header"
+    def should_header_button_have_proper_name(self, button_locator, button_name):
+        assert self.is_text_expected(button_locator, button_name), f"Unexpected text on {button_name} button in header"
 
-    def should_icons_be_visible(self):
-        assert self.browser.find_element(*Icons.ICON_PRACTISE).is_displayed(), "Practise icon is not displayed"
-        assert self.browser.find_element(*Icons.ICON_CUSTOM).is_displayed(), "Custom icon is not displayed"
-        assert self.browser.find_element(*Icons.ICON_BASE).is_displayed(), "Base icon is not displayed"
-        assert self.browser.find_element(*Icons.ICON_MULTI).is_displayed(), "Multi icon is not displayed"
+    def should_icon_be_visible(self, icon_locator, icon_name):
+        assert self.browser.find_element(*icon_locator).is_displayed(), f"{icon_name} icon is not displayed"
 
     def should_texts_under_icons_be_proper(self):
         assert self.is_text_expected(TextSections.PRACTISE_TEXT,
