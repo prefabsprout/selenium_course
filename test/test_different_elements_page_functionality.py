@@ -14,7 +14,7 @@ def test_different_elements_page_functionality(user_credentials, browser):
     # Assert browser title
     main_page.should_browser_title_be_correct()
 
-    # Perform login and check if user authorised
+    # Perform login and check if user authorized
     main_page.login(user_credentials["username"], user_credentials["password"])
     main_page.should_be_authorised(user_credentials["full_username"])
 
