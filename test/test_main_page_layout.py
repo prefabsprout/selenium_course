@@ -41,13 +41,14 @@ class TestMainPageLayout:
         # Assert that there are 4 images on the Index Page and they are displayed
         main_page.should_icon_be_visible(*icon)
 
-    def test_should_texts_under_icons_be_proper(self, browser):
+    @pytest.mark.parametrize('text_under_icon', MainPageDataContent.texts_under_icons_content)
+    def test_should_texts_under_icons_be_proper(self, browser, text_under_icon):
         # Open browser and go to page
         main_page = MainPage(browser, HOMEPAGE_URL)
         main_page.open()
 
         # Assert that there are 4 texts on the Index Page under icons and they have proper text
-        main_page.should_texts_under_icons_be_proper()
+        main_page.should_text_under_icon_be_proper(*text_under_icon)
 
     def test_should_any_iframe_with_frame_button_have_iframe(self, browser):
         # Open browser and go to page

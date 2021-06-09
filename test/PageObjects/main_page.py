@@ -38,21 +38,8 @@ class MainPage(BasePage):
     def should_icon_be_visible(self, icon_locator, icon_name):
         assert self.browser.find_element(*icon_locator).is_displayed(), f"{icon_name} icon is not displayed"
 
-    def should_texts_under_icons_be_proper(self):
-        assert self.is_text_expected(TextSections.PRACTISE_TEXT,
-                                     "To include good practices\n"
-                                     "and ideas from successful\n"
-                                     "EPAM project"), "Unexpected text under PRACTISE icon"
-        assert self.is_text_expected(TextSections.CUSTOM_TEXT,
-                                     "To be flexible and\n"
-                                     "customizable"), "Unexpected text under CUSTOM icon"
-        assert self.is_text_expected(TextSections.MULTI_TEXT,
-                                     "To be multiplatform"), "Unexpected text under MULTI icon"
-        assert self.is_text_expected(TextSections.BASE_TEXT,
-                                     "Already have good base\n"
-                                     "(about 20 internal and\n"
-                                     "some external projects),\n"
-                                     "wish to get more…"), "Unexpected text under BASE icon"
+    def should_text_under_icon_be_proper(self, text_section_locator, text, icon_name):
+        assert self.is_text_expected(text_section_locator, text), f"Unexpected text under {icon_name} icon"
 
     def should_iframes_with_frame_button_exist(self):
         assert self.__get_list_of_iframes_with_frame_button()
