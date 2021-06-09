@@ -1,8 +1,6 @@
 from test.Locators.buttons import Buttons
 from test.Locators.forms import Forms
 from test.Locators.header_buttons import HeaderButtons
-from test.Locators.icons import Icons
-from test.Locators.sidebar_buttons import SidebarButtons
 from test.Locators.text_sections import TextSections
 from test.PageObjects.base_page import BasePage
 
