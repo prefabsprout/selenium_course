@@ -44,16 +44,8 @@ class MainPage(BasePage):
     def should_iframes_with_frame_button_exist(self):
         assert self.__get_list_of_iframes_with_frame_button()
 
-    def should_sidebar_buttons_have_proper_text(self):
-        assert self.is_text_expected(SidebarButtons.HOME_BUTTON, "Home"), "Unexpected text on Home button in sidebar"
-        assert self.is_text_expected(SidebarButtons.CONTACT_FORM_BUTTON, "Contact form"), \
-            "Unexpected text on Contact form button in sidebar"
-        assert self.is_text_expected(SidebarButtons.SERVICE_DROPDOWN_MENU, "Service"), \
-            "Unexpected text on Service button in sidebar"
-        assert self.is_text_expected(SidebarButtons.METALS_COLORS_BUTTON, "Metals & Colors"), \
-            "Unexpected text on Metals & Colors button in sidebar"
-        assert self.is_text_expected(SidebarButtons.ELEMENTS_PACKS_BUTTON, "Elements packs"), \
-            "Unexpected text on Elements packs button in sidebar"
+    def should_sidebar_buttons_have_proper_text(self, button_locator, button_name):
+        assert self.is_text_expected(button_locator, button_name), f"Unexpected text on {button_name} button in sidebar"
 
     def should_any_iframe_with_frame_button_have_iframe(self):
         self.browser.switch_to.frame(self.__get_list_of_iframes_with_frame_button()[0])

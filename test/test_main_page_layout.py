@@ -66,10 +66,11 @@ class TestMainPageLayout:
         # Switch to the iframe and check that there is “Frame Button” in the iframe and switch to original window back
         main_page.should_any_iframe_with_frame_button_have_iframe()
 
-    def test_should_sidebar_buttons_have_proper_text(self, browser):
+    @pytest.mark.parametrize('sidebar_button', MainPageDataContent.sidebar_buttons_content)
+    def test_should_sidebar_buttons_have_proper_text(self, browser, sidebar_button):
         # Open browser and go to page
         main_page = MainPage(browser, HOMEPAGE_URL)
         main_page.open()
 
         # Assert that there are 5 items in the Left Section are displayed and they have proper text
-        main_page.should_sidebar_buttons_have_proper_text()
+        main_page.should_sidebar_buttons_have_proper_text(*sidebar_button)
