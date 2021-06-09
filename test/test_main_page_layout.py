@@ -1,6 +1,6 @@
 import pytest
 
-from test.PageObjects.main_page import MainPage
+from test.pageobjects.main_page import MainPage
 from test.constants import HOMEPAGE_URL
 from test.datacontent.main_page_data_content import MainPageDataContent
 

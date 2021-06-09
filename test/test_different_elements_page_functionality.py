@@ -1,8 +1,8 @@
-from test.Locators.checkboxes import Checkboxes
-from test.Locators.dropdowns import Dropdowns
-from test.Locators.radiobuttons import RadioButtons
-from test.PageObjects.different_elements_page import DifferentElementsPage
-from test.PageObjects.main_page import MainPage
+from test.locators.checkboxes import Checkboxes
+from test.locators.dropdowns import Dropdowns
+from test.locators.radiobuttons import RadioButtons
+from test.pageobjects.different_elements_page import DifferentElementsPage
+from test.pageobjects.main_page import MainPage
 from test.constants import HOMEPAGE_URL
 
 

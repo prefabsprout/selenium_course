@@ -1,8 +1,8 @@
-from test.Locators.buttons import Buttons
-from test.Locators.forms import Forms
-from test.Locators.header_buttons import HeaderButtons
-from test.Locators.text_sections import TextSections
-from test.PageObjects.base_page import BasePage
+from test.locators.buttons import Buttons
+from test.locators.forms import Forms
+from test.locators.header_buttons import HeaderButtons
+from test.locators.text_sections import TextSections
+from test.pageobjects.base_page import BasePage
 
 
 class MainPage(BasePage):

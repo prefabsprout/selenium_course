@@ -2,8 +2,8 @@ from datetime import datetime
 
 from selenium.webdriver.support.select import Select
 
-from test.Locators.text_sections import TextSections
-from test.PageObjects.base_page import BasePage
+from test.locators.text_sections import TextSections
+from test.pageobjects.base_page import BasePage
 
 
 class DifferentElementsPage(BasePage):

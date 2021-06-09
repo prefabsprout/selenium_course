@@ -1,7 +1,7 @@
-from test.Locators.header_buttons import HeaderButtons
-from test.Locators.icons import Icons
-from test.Locators.sidebar_buttons import SidebarButtons
-from test.Locators.text_sections import TextSections
+from test.locators.header_buttons import HeaderButtons
+from test.locators.icons import Icons
+from test.locators.sidebar_buttons import SidebarButtons
+from test.locators.text_sections import TextSections
 
 
 class MainPageDataContent:
