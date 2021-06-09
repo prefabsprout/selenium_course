@@ -23,14 +23,14 @@ class TestMainPageLayout:
         main_page.login(user_credentials["username"], user_credentials["password"])
         main_page.should_be_authorised(user_credentials["full_username"])
 
-    @pytest.mark.parametrize('button', MainPageDataContent.header_buttons_content)
-    def test_should_header_buttons_have_proper_names(self, browser, button):
+    @pytest.mark.parametrize('header_button', MainPageDataContent.header_buttons_content)
+    def test_should_header_buttons_have_proper_names(self, browser, header_button):
         # Open browser and go to page
         main_page = MainPage(browser, HOMEPAGE_URL)
         main_page.open()
 
         # Assert that there are 4 items on the header section are displayed and they have proper texts
-        main_page.should_header_button_have_proper_name(**button)
+        main_page.should_header_button_have_proper_name(**header_button)
 
     @pytest.mark.parametrize('icon', MainPageDataContent.icons_content)
     def test_should_icons_be_visible(self, browser, icon):
