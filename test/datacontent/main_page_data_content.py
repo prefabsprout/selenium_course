@@ -5,37 +5,39 @@ from test.Locators.text_sections import TextSections
 
 
 class MainPageDataContent:
-    header_buttons_content = [(HeaderButtons.HOME_BUTTON, "HOME"),
-                              (HeaderButtons.CONTACT_FORM_BUTTON, "CONTACT FORM"),
-                              (HeaderButtons.SERVICE_DROPDOWN_BUTTON, "SERVICE"),
-                              (HeaderButtons.METALS_COLORS_BUTTON, "METALS & COLORS")]
+    header_buttons_content = [{"button_locator": HeaderButtons.HOME_BUTTON, "button_name": "HOME"},
+                              {"button_locator": HeaderButtons.CONTACT_FORM_BUTTON, "button_name": "CONTACT FORM"},
+                              {"button_locator": HeaderButtons.SERVICE_DROPDOWN_BUTTON, "button_name": "SERVICE"},
+                              {"button_locator": HeaderButtons.METALS_COLORS_BUTTON, "button_name": "METALS & COLORS"}]
 
-    icons_content = [(Icons.ICON_PRACTISE, "Practise"),
-                     (Icons.ICON_CUSTOM, "Custom"),
-                     (Icons.ICON_BASE, "Base"),
-                     (Icons.ICON_MULTI, "Multi")]
+    icons_content = [{"icon_locator": Icons.ICON_PRACTISE, "icon_name": "Practise"},
+                     {"icon_locator": Icons.ICON_CUSTOM, "icon_name": "Custom"},
+                     {"icon_locator": Icons.ICON_BASE, "icon_name": "Base"},
+                     {"icon_locator": Icons.ICON_MULTI, "icon_name": "Multi"}]
 
-    texts_under_icons_content = [(TextSections.PRACTISE_TEXT,
-                                  "To include good practices\n"
-                                  "and ideas from successful\n"
-                                  "EPAM project",
-                                  "Practise"),
-                                 (TextSections.CUSTOM_TEXT,
-                                  "To be flexible and\n"
-                                  "customizable",
-                                  "Custom"),
-                                 (TextSections.MULTI_TEXT,
-                                  "To be multiplatform",
-                                  "Multi"),
-                                 (TextSections.BASE_TEXT,
-                                  "Already have good base\n"
-                                  "(about 20 internal and\n"
-                                  "some external projects),\n"
-                                  "wish to get more…",
-                                  "Base")]
+    texts_under_icons_content = [{"text_section_locator": TextSections.PRACTISE_TEXT,
+                                  "text": "To include good practices\n"
+                                          "and ideas from successful\n"
+                                          "EPAM project",
+                                  "icon_name": "Practise"},
+                                 {"text_section_locator": TextSections.CUSTOM_TEXT,
+                                  "text": "To be flexible and\n"
+                                          "customizable",
+                                  "icon_name": "Custom"},
+                                 {"text_section_locator": TextSections.MULTI_TEXT,
+                                  "text": "To be multiplatform",
+                                  "icon_name": "Multi"},
+                                 {"text_section_locator": TextSections.BASE_TEXT,
+                                  "text": "Already have good base\n"
+                                          "(about 20 internal and\n"
+                                          "some external projects),\n"
+                                          "wish to get more…",
+                                  "icon_name": "Base"}]
 
-    sidebar_buttons_content = [(SidebarButtons.HOME_BUTTON, "Home"),
-                               (SidebarButtons.CONTACT_FORM_BUTTON, "Contact form"),
-                               (SidebarButtons.SERVICE_DROPDOWN_MENU, "Service"),
-                               (SidebarButtons.METALS_COLORS_BUTTON, "Metals & Colors"),
-                               (SidebarButtons.ELEMENTS_PACKS_BUTTON, "Elements packs")]
+    sidebar_buttons_content = [{"button_locator": SidebarButtons.HOME_BUTTON, "button_name": "Home"},
+                               {"button_locator": SidebarButtons.CONTACT_FORM_BUTTON, "button_name": "Contact form"},
+                               {"button_locator": SidebarButtons.SERVICE_DROPDOWN_MENU, "button_name": "Service"},
+                               {"button_locator": SidebarButtons.METALS_COLORS_BUTTON,
+                                "button_name": "Metals & Colors"},
+                               {"button_locator": SidebarButtons.ELEMENTS_PACKS_BUTTON,
+                                "button_name": "Elements packs"}]

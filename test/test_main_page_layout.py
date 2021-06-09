@@ -30,7 +30,7 @@ class TestMainPageLayout:
         main_page.open()
 
         # Assert that there are 4 items on the header section are displayed and they have proper texts
-        main_page.should_header_button_have_proper_name(*button)
+        main_page.should_header_button_have_proper_name(**button)
 
     @pytest.mark.parametrize('icon', MainPageDataContent.icons_content)
     def test_should_icons_be_visible(self, browser, icon):
@@ -39,7 +39,7 @@ class TestMainPageLayout:
         main_page.open()
 
         # Assert that there are 4 images on the Index Page and they are displayed
-        main_page.should_icon_be_visible(*icon)
+        main_page.should_icon_be_visible(**icon)
 
     @pytest.mark.parametrize('text_under_icon', MainPageDataContent.texts_under_icons_content)
     def test_should_texts_under_icons_be_proper(self, browser, text_under_icon):
@@ -48,7 +48,7 @@ class TestMainPageLayout:
         main_page.open()
 
         # Assert that there are 4 texts on the Index Page under icons and they have proper text
-        main_page.should_text_under_icon_be_proper(*text_under_icon)
+        main_page.should_text_under_icon_be_proper(**text_under_icon)
 
     def test_should_any_iframe_with_frame_button_have_iframe(self, browser):
         # Open browser and go to page
@@ -73,4 +73,4 @@ class TestMainPageLayout:
         main_page.open()
 
         # Assert that there are 5 items in the Left Section are displayed and they have proper text
-        main_page.should_sidebar_buttons_have_proper_text(*sidebar_button)
+        main_page.should_sidebar_buttons_have_proper_text(**sidebar_button)
