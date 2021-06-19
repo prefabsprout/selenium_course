@@ -1,66 +1,76 @@
-from test.Locators.buttons import Buttons
-from test.Locators.forms import Forms
-from test.Locators.header_buttons import HeaderButtons
-from test.Locators.icons import Icons
-from test.Locators.sidebar_buttons import SidebarButtons
-from test.Locators.text_sections import TextSections
+import pytest
+
+from test.pageobjects.main_page import MainPage
 from test.constants import HOMEPAGE_URL
+from test.datacontent.main_page_data_content import MainPageDataContent
 
 
-def test_main_page_layout(user_credentials, driver):
-    # 1.Open browser and go to page
-    driver.get(HOMEPAGE_URL)
+class TestMainPageLayout:
+    def test_is_main_page_open_correctly(self, browser):
+        # Open browser and go to page
+        main_page = MainPage(browser, HOMEPAGE_URL)
+        main_page.open()
 
-    # 2.Assert browser title
-    assert driver.title == "Home Page"
+        # Assert browser title
+        main_page.should_browser_title_be_correct()
 
-    # 3.Perform login
-    driver.find_element(*HeaderButtons.PROFILE_MENU_BUTTON).click()
-    driver.find_element(*Forms.USER_NAME_FORM).send_keys(user_credentials["username"])
-    driver.find_element(*Forms.USER_PASSWORD_FORM).send_keys(user_credentials["password"])
-    driver.find_element(*HeaderButtons.LOGIN_BUTTON).click()
+    def test_guest_should_be_authorized(self, browser, user_credentials):
+        # Open browser and go to page
+        main_page = MainPage(browser, HOMEPAGE_URL)
+        main_page.open()
 
-    # 4.Assert Username is logged
-    assert driver.find_element(*TextSections.USER_NAME).text == user_credentials["full_username"]
+        # Perform login and check if user authorized
+        main_page.login(user_credentials["username"], user_credentials["password"])
+        main_page.should_be_authorised(user_credentials["full_username"])
 
-    # 5.Assert that there are 4 items on the header section are displayed and they have proper texts
-    assert driver.find_element(*HeaderButtons.HOME_BUTTON).text == "HOME"
-    assert driver.find_element(*HeaderButtons.CONTACT_FORM_BUTTON).text == "CONTACT FORM"
-    assert driver.find_element(*HeaderButtons.SERVICE_DROPDOWN_BUTTON).text == "SERVICE"
-    assert driver.find_element(*HeaderButtons.METALS_COLORS_BUTTON).text == "METALS & COLORS"
+    @pytest.mark.parametrize('header_button', MainPageDataContent.header_buttons_content)
+    def test_should_header_buttons_have_proper_names(self, browser, header_button):
+        # Open browser and go to page
+        main_page = MainPage(browser, HOMEPAGE_URL)
+        main_page.open()
 
-    # 6.Assert that there are 4 images on the Index Page and they are displayed
-    assert driver.find_element(*Icons.ICON_PRACTISE).is_displayed()
-    assert driver.find_element(*Icons.ICON_CUSTOM).is_displayed()
-    assert driver.find_element(*Icons.ICON_BASE).is_displayed()
-    assert driver.find_element(*Icons.ICON_MULTI).is_displayed()
+        # Assert that there are 4 items on the header section are displayed and they have proper texts
+        main_page.should_header_button_have_proper_name(**header_button)
 
-    # 7.Assert that there are 4 texts on the Index Page under icons and they have proper text
-    assert driver.find_element(*TextSections.PRACTISE_TEXT).text == "To include good practices\n" \
-                                                                    "and ideas from successful\n" \
-                                                                    "EPAM project"
-    assert driver.find_element(*TextSections.CUSTOM_TEXT).text == "To be flexible and\n" \
-                                                                  "customizable"
-    assert driver.find_element(*TextSections.MULTI_TEXT).text == "To be multiplatform"
-    assert driver.find_element(*TextSections.BASE_TEXT).text == "Already have good base\n" \
-                                                                "(about 20 internal and\n" \
-                                                                "some external projects),\n" \
-                                                                "wish to get more…"
+    @pytest.mark.parametrize('icon', MainPageDataContent.icons_content)
+    def test_should_icons_be_visible(self, browser, icon):
+        # Open browser and go to page
+        main_page = MainPage(browser, HOMEPAGE_URL)
+        main_page.open()
 
-    # 8.Assert that there is the iframe with “Frame Button” exist
-    iframes_with_frame_button = driver.find_elements_by_id("frame")
-    assert iframes_with_frame_button
+        # Assert that there are 4 images on the Index Page and they are displayed
+        main_page.should_icon_be_visible(**icon)
 
-    # 9.Switch to the iframe and check that there is “Frame Button” in the iframe
-    driver.switch_to.frame(iframes_with_frame_button[0])
-    driver.find_element(*Buttons.FRAME_BUTTON)
+    @pytest.mark.parametrize('text_under_icon', MainPageDataContent.texts_under_icons_content)
+    def test_should_texts_under_icons_be_proper(self, browser, text_under_icon):
+        # Open browser and go to page
+        main_page = MainPage(browser, HOMEPAGE_URL)
+        main_page.open()
 
-    # 10.Switch to original window back
-    driver.switch_to.default_content()
+        # Assert that there are 4 texts on the Index Page under icons and they have proper text
+        main_page.should_text_under_icon_be_proper(**text_under_icon)
 
-    # 11.Assert that there are 5 items in the Left Section are displayed and they have proper text
-    assert driver.find_element(*SidebarButtons.HOME_BUTTON).text == "Home"
-    assert driver.find_element(*SidebarButtons.CONTACT_FORM_BUTTON).text == "Contact form"
-    assert driver.find_element(*SidebarButtons.SERVICE_DROPDOWN_MENU).text == "Service"
-    assert driver.find_element(*SidebarButtons.METALS_COLORS_BUTTON).text == "Metals & Colors"
-    assert driver.find_element(*SidebarButtons.ELEMENTS_PACKS_BUTTON).text == "Elements packs"
+    def test_should_any_iframe_with_frame_button_have_iframe(self, browser):
+        # Open browser and go to page
+        main_page = MainPage(browser, HOMEPAGE_URL)
+        main_page.open()
+
+        # Assert that there is the iframe with “Frame Button” exist
+        main_page.should_iframes_with_frame_button_exist()
+
+    def test_should_frame_button_exists_in_any_iframe(self, browser):
+        # Open browser and go to page
+        main_page = MainPage(browser, HOMEPAGE_URL)
+        main_page.open()
+
+        # Switch to the iframe and check that there is “Frame Button” in the iframe and switch to original window back
+        main_page.should_any_iframe_with_frame_button_have_iframe()
+
+    @pytest.mark.parametrize('sidebar_button', MainPageDataContent.sidebar_buttons_content)
+    def test_should_sidebar_buttons_have_proper_text(self, browser, sidebar_button):
+        # Open browser and go to page
+        main_page = MainPage(browser, HOMEPAGE_URL)
+        main_page.open()
+
+        # Assert that there are 5 items in the Left Section are displayed and they have proper text
+        main_page.should_sidebar_buttons_have_proper_text(**sidebar_button)
