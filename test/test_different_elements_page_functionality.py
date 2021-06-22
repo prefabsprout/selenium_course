@@ -1,3 +1,5 @@
+import allure
+
 from test.locators.checkboxes import Checkboxes
 from test.locators.dropdowns import Dropdowns
 from test.locators.radiobuttons import RadioButtons
@@ -6,7 +8,9 @@ from test.pageobjects.main_page import MainPage
 from test.constants import HOMEPAGE_URL
 
 
+@allure.feature("Different elements page functionality")
 class TestDifferentElementsPageFunctionality:
+    @allure.story("Checkboxes functionality")
     def test_checkboxes(self, browser, user_credentials):
         # Open browser and go to page
         main_page = MainPage(browser, HOMEPAGE_URL)
@@ -25,6 +29,7 @@ class TestDifferentElementsPageFunctionality:
         different_elements_page.select_checkbox(Checkboxes.WIND_CHECKBOX, "Wind")
         different_elements_page.select_checkbox(Checkboxes.WATER_CHECKBOX, "Water")
 
+    @allure.story("Radiobutton functionality")
     def test_radiobutton(self, browser, user_credentials):
         # Open browser and go to page
         main_page = MainPage(browser, HOMEPAGE_URL)
@@ -42,6 +47,7 @@ class TestDifferentElementsPageFunctionality:
         # Select radiobutton. Assert there is a log for radiobutton
         different_elements_page.select_radiobutton(RadioButtons.SELEN_RADIOBUTTON, "Selen")
 
+    @allure.story("Dropdown functionality")
     def test_dropdown(self, browser, user_credentials):
         # Open browser and go to page
         main_page = MainPage(browser, HOMEPAGE_URL)
