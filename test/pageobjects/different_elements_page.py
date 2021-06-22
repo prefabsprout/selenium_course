@@ -12,20 +12,20 @@ class DifferentElementsPage(BasePage):
         super().__init__(browser, url)
         self.browser_title = "Different Elements"
 
-    @allure.step("Select in dropdown. Assert there is a log for dropdown")
+    @allure.step("Select in dropdown element {element}. Assert there is a log for dropdown")
     def select_element_from_dropdown(self, dropdown_locator, element):
         dropdown_selector = Select(self.browser.find_element(*dropdown_locator))
         dropdown_selector.select_by_visible_text(element)
         current_time = datetime.now().strftime("%H:%M:%S")
         self.should_logs_about_dropdown_interaction_exist(element, current_time)
 
-    @allure.step("Select checkboxes. Assert there is a log for each checkbox")
+    @allure.step("Select checkbox {checkbox_name}. Assert there is a log for each checkbox")
     def select_checkbox(self, checkbox_locator, checkbox_name):
         self.browser.find_element(*checkbox_locator).click()
         current_time = datetime.now().strftime("%H:%M:%S")
         self.should_logs_about_checkbox_interaction_exist(checkbox_name, current_time)
 
-    @allure.step("Select radiobutton. Assert there is a log for radiobutton")
+    @allure.step("Select radiobutton {radiobutton_name}. Assert there is a log for radiobutton")
     def select_radiobutton(self, radiobutton_locator, radiobutton_name):
         self.browser.find_element(*radiobutton_locator).click()
         current_time = datetime.now().strftime("%H:%M:%S")
