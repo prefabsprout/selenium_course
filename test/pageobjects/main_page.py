@@ -15,6 +15,7 @@ class MainPage(BasePage):
     def __get_list_of_iframes_with_frame_button(self):
         return self.browser.find_elements_by_id("frame")
 
+    @allure.step("Open Different Elements Page via header menu")
     def go_to_different_elements_page(self):
         self.browser.find_element(*HeaderButtons.DIFFERENT_ELEMENTS_BUTTON).click()
 
@@ -25,6 +26,7 @@ class MainPage(BasePage):
         self.browser.find_element(*Forms.USER_PASSWORD_FORM).send_keys(password)
         self.browser.find_element(*HeaderButtons.LOGIN_BUTTON).click()
 
+    @allure.step("Open through the header menu Service")
     def open_service_sidebar_menu(self):
         self.browser.find_element(*HeaderButtons.SERVICE_DROPDOWN_BUTTON).click()
         return self
