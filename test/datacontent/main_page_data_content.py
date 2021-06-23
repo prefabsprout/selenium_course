@@ -22,7 +22,7 @@ class MainPageDataContent:
                                   "icon_name": "Practise"},
                                  {"text_section_locator": TextSections.CUSTOM_TEXT,
                                   "text": "To be flexible and\n"
-                                          "customizable",
+                                          "oops, looks like something gone wrong...",
                                   "icon_name": "Custom"},
                                  {"text_section_locator": TextSections.MULTI_TEXT,
                                   "text": "To be multiplatform",
