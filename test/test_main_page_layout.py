@@ -1,3 +1,4 @@
+import allure
 import pytest
 
 from test.pageobjects.main_page import MainPage
@@ -5,7 +6,9 @@ from test.constants import HOMEPAGE_URL
 from test.datacontent.main_page_data_content import MainPageDataContent
 
 
+@allure.feature("Main page layout")
 class TestMainPageLayout:
+    @allure.story("Main page should be open correctly")
     def test_is_main_page_open_correctly(self, browser):
         # Open browser and go to page
         main_page = MainPage(browser, HOMEPAGE_URL)
@@ -14,6 +17,7 @@ class TestMainPageLayout:
         # Assert browser title
         main_page.should_browser_title_be_correct()
 
+    @allure.story("Guest user should be authorized")
     def test_guest_should_be_authorized(self, browser, user_credentials):
         # Open browser and go to page
         main_page = MainPage(browser, HOMEPAGE_URL)
@@ -23,6 +27,7 @@ class TestMainPageLayout:
         main_page.login(user_credentials["username"], user_credentials["password"])
         main_page.should_be_authorised(user_credentials["full_username"])
 
+    @allure.story("All header buttons should have proper name")
     @pytest.mark.parametrize('header_button', MainPageDataContent.header_buttons_content)
     def test_should_header_buttons_have_proper_names(self, browser, header_button):
         # Open browser and go to page
@@ -32,6 +37,7 @@ class TestMainPageLayout:
         # Assert that there are 4 items on the header section are displayed and they have proper texts
         main_page.should_header_button_have_proper_name(**header_button)
 
+    @allure.story("All icons should be visible")
     @pytest.mark.parametrize('icon', MainPageDataContent.icons_content)
     def test_should_icons_be_visible(self, browser, icon):
         # Open browser and go to page
@@ -41,6 +47,7 @@ class TestMainPageLayout:
         # Assert that there are 4 images on the Index Page and they are displayed
         main_page.should_icon_be_visible(**icon)
 
+    @allure.story("All icons should have proper texts")
     @pytest.mark.parametrize('text_under_icon', MainPageDataContent.texts_under_icons_content)
     def test_should_texts_under_icons_be_proper(self, browser, text_under_icon):
         # Open browser and go to page
@@ -50,6 +57,7 @@ class TestMainPageLayout:
         # Assert that there are 4 texts on the Index Page under icons and they have proper text
         main_page.should_text_under_icon_be_proper(**text_under_icon)
 
+    @allure.story("Any iframe with frame_button should exists")
     def test_should_any_iframe_with_frame_button_have_iframe(self, browser):
         # Open browser and go to page
         main_page = MainPage(browser, HOMEPAGE_URL)
@@ -58,6 +66,7 @@ class TestMainPageLayout:
         # Assert that there is the iframe with “Frame Button” exist
         main_page.should_iframes_with_frame_button_exist()
 
+    @allure.story("frame_button should exists in any iframe")
     def test_should_frame_button_exists_in_any_iframe(self, browser):
         # Open browser and go to page
         main_page = MainPage(browser, HOMEPAGE_URL)
@@ -66,6 +75,7 @@ class TestMainPageLayout:
         # Switch to the iframe and check that there is “Frame Button” in the iframe and switch to original window back
         main_page.should_any_iframe_with_frame_button_have_iframe()
 
+    @allure.story("All sidebar buttons should have proper name")
     @pytest.mark.parametrize('sidebar_button', MainPageDataContent.sidebar_buttons_content)
     def test_should_sidebar_buttons_have_proper_text(self, browser, sidebar_button):
         # Open browser and go to page
